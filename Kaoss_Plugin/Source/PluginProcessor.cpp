@@ -98,21 +98,26 @@ void HandlerProcessor::changeProgramName(int index, const juce::String& newName)
 //==============================================================================
 void HandlerProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-    chain.get<1>().get<0>().setGainDecibels(24);
-    chain.get<1>().get<1>().setBias(0.4f);
-    chain.get<1>().get<2>().functionToUse = std::tanh;
-    chain.get<1>().get<3>().state = IIR::Coefficients<float>::makeHighPass(sampleRate, 5.0);
-    chain.get<1>().get<4>().setGainDecibels(-24.f);
+    //chain.get<1>().get<0>().setGainDecibels(24);
+    //chain.get<1>().get<1>().setBias(0.4f);
+    //chain.get<1>().get<2>().functionToUse = std::tanh;
+    //chain.get<1>().get<3>().state = IIR::Coefficients<float>::makeHighPass(sampleRate, 5.0);
+    //chain.get<1>().get<4>().setGainDecibels(-24.f);
 
-    chain.get<2>().setDelay(3);
+    //chain.get<2>().setDelay(3);
 
-    juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32> (samplesPerBlock), 2 };
-    chain.prepare(spec);
+    //chain.prepare(spec);
 
-    const int numInputChannels = getTotalNumInputChannels();
-    const int delayByfferSize = (sampleRate + samplesPerBlock) * 1.;
+    juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32> (samplesPerBlock), getTotalNumInputChannels() };
 
-    mDelayBuffer.setSize(numInputChannels, delayByfferSize);
+    for (AudioEffectBase effect : mEffectRack)
+    {
+        effect.prepare(spec);
+    }
+
+    const int delayBufferSize = (sampleRate + samplesPerBlock) * 1.;
+
+    mDelayBuffer.setSize(getTotalNumInputChannels(), delayBufferSize);
 
     this->mSampleRate = sampleRate;
 }
@@ -163,15 +168,15 @@ void HandlerProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Midi
         const float* delayBufferData = mDelayBuffer.getReadPointer(channel);
         float* dryBuffer = buffer.getWritePointer(channel);
 
-        if (y == 0) fillDelayBuffer(channel, bufferLength, delayBufferLength, bufferData, delayBufferData);
-        if (y != 0) getFromDelayBuffer(buffer, channel, bufferLength, delayBufferLength, bufferData, delayBufferData);
-        feedbackDelay(channel, bufferLength, delayBufferLength, dryBuffer);
+        /*fillDelayBuffer(channel, bufferLength, delayBufferLength, bufferData, delayBufferData);
+        getFromDelayBuffer(buffer, channel, bufferLength, delayBufferLength, bufferData, delayBufferData);
+        feedbackDelay(channel, bufferLength, delayBufferLength, dryBuffer);*/
     }
+
+    if (y == 0) mWritePosition = 0;
 
     mWritePosition += bufferLength;
     mWritePosition %= delayBufferLength;
-
-    if (y == 0) looperStart = mWritePosition;
 
     //AudioBlock<float> block(buffer);
 
@@ -220,17 +225,17 @@ void HandlerProcessor::getFromDelayBuffer(juce::AudioBuffer<float>& buffer, int 
 
 void HandlerProcessor::feedbackDelay(int channel, const int bufferLength, const int delayBufferLength, float* dryBuffer)
 {
-    const float gain = 1;
+    const float feedback = 1;
     if (delayBufferLength > bufferLength + mWritePosition)
     {
-        mDelayBuffer.addFromWithRamp(channel, mWritePosition, dryBuffer, bufferLength, gain, gain);
+        mDelayBuffer.addFromWithRamp(channel, mWritePosition, dryBuffer, bufferLength, feedback, feedback);
     }
     else
     {
         const int bufferRemaining = delayBufferLength - mWritePosition;
 
-        mDelayBuffer.addFromWithRamp(channel, bufferRemaining, dryBuffer, bufferRemaining, gain, gain);
-        mDelayBuffer.addFromWithRamp(channel, 0, dryBuffer, bufferLength - bufferRemaining, gain, gain);
+        mDelayBuffer.addFromWithRamp(channel, bufferRemaining, dryBuffer, bufferRemaining, feedback, feedback);
+        mDelayBuffer.addFromWithRamp(channel, 0, dryBuffer, bufferLength - bufferRemaining, feedback, feedback);
     }
 }
 

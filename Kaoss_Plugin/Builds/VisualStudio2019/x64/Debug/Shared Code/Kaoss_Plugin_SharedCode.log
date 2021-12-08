@@ -1,5 +1,7 @@
 ﻿  PluginEditor.cpp
   PluginProcessor.cpp
+C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginEditor.cpp(66,44): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginEditor.cpp(68,44): warning C4244: =: преобразование "double" в "int", возможна потеря данных
 C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginProcessor.cpp(85,46): warning C4100: index: неиспользованный формальный параметр
 C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginProcessor.cpp(89,57): warning C4100: index: неиспользованный формальный параметр
 C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginProcessor.cpp(94,73): warning C4100: newName: неиспользованный формальный параметр
@@ -18,6 +20,4 @@ C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginProcessor.cpp
           [
               FloatType=float
           ]
-C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginEditor.cpp(66,44): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Source\PluginEditor.cpp(68,44): warning C4244: =: преобразование "double" в "int", возможна потеря данных
   Kaoss_Plugin_SharedCode.vcxproj -> C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Builds\VisualStudio2019\x64\Debug\Shared Code\Kaoss_Plugin.lib

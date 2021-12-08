@@ -11,6 +11,8 @@
 #include <JuceHeader.h>
 #include "vector"
 #include "algorithm"
+#include "../Builds/VisualStudio2019/AudioEffectBase.h"
+
 using namespace juce;
 using namespace juce::dsp;
 using namespace std;
@@ -88,11 +90,11 @@ public:
 
     int mSampleRate;
     int x = 0, y = 0;
-    vector<int> rack = { 1,2,3 };
-
-    int looperStart;
+    
 
 private:
+
+    vector<AudioEffectBase> mEffectRack;
 
     using Distortion = ProcessorChain<Gain<float>, Bias<float>, WaveShaper<float>, ProcessorDuplicator<IIR::Filter<float>, IIR::Coefficients<float>>, Gain<float>>;
     ProcessorChain </*TODO Looper, TODO Tempo*/
@@ -102,6 +104,8 @@ private:
     > chain;
 
     AudioBuffer <float> mDelayBuffer;
+    AudioBuffer <float> mLooperBuffer;
+    bool mLooperBufferFilled=false;
     int mWritePosition{ 0 };
 
     //==============================================================================

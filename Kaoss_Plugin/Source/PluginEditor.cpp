@@ -33,7 +33,6 @@ HandleProcessorEditor::HandleProcessorEditor(HandlerProcessor& p)
     yTest.addListener(this);
     yTest.setName("yTest");
 
-
     addAndMakeVisible(&yTest);
 }
 
