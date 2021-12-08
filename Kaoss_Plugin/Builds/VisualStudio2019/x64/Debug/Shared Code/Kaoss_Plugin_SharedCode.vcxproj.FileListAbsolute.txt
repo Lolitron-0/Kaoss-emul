@@ -1,0 +1,2 @@
+C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Builds\VisualStudio2019\x64\Debug\Shared Code\Kaoss_Plugin.lib
+C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Builds\VisualStudio2019\x64\Debug\Shared Code\Kaoss_Plugin.pdb

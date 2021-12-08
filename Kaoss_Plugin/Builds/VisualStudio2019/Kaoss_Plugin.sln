@@ -1,11 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2019
 
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaoss_Plugin - Standalone Plugin", "Kaoss_Plugin_StandalonePlugin.vcxproj", "{3C8674B9-6BCA-D6C4-C11D-00EE7EB70E86}"
-	ProjectSection(ProjectDependencies) = postProject
-		{42EA81B8-E89A-005F-6771-D5C514F1BCDB} = {42EA81B8-E89A-005F-6771-D5C514F1BCDB}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaoss_Plugin - VST3", "Kaoss_Plugin_VST3.vcxproj", "{E5044CE9-E11F-F27E-60CA-AABD6F80479E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42EA81B8-E89A-005F-6771-D5C514F1BCDB} = {42EA81B8-E89A-005F-6771-D5C514F1BCDB}
@@ -23,10 +18,6 @@ Global
 		{E5044CE9-E11F-F27E-60CA-AABD6F80479E}.Debug|x64.Build.0 = Debug|x64
 		{E5044CE9-E11F-F27E-60CA-AABD6F80479E}.Release|x64.ActiveCfg = Release|x64
 		{E5044CE9-E11F-F27E-60CA-AABD6F80479E}.Release|x64.Build.0 = Release|x64
-		{3C8674B9-6BCA-D6C4-C11D-00EE7EB70E86}.Debug|x64.ActiveCfg = Debug|x64
-		{3C8674B9-6BCA-D6C4-C11D-00EE7EB70E86}.Debug|x64.Build.0 = Debug|x64
-		{3C8674B9-6BCA-D6C4-C11D-00EE7EB70E86}.Release|x64.ActiveCfg = Release|x64
-		{3C8674B9-6BCA-D6C4-C11D-00EE7EB70E86}.Release|x64.Build.0 = Release|x64
 		{42EA81B8-E89A-005F-6771-D5C514F1BCDB}.Debug|x64.ActiveCfg = Debug|x64
 		{42EA81B8-E89A-005F-6771-D5C514F1BCDB}.Debug|x64.Build.0 = Debug|x64
 		{42EA81B8-E89A-005F-6771-D5C514F1BCDB}.Release|x64.ActiveCfg = Release|x64

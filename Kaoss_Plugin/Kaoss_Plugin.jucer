@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="pyHHIM" name="Kaoss_Plugin" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              pluginFormats="buildVST3" cppLanguageStandard="17">
   <MAINGROUP id="hwJXM0" name="Kaoss_Plugin">
     <GROUP id="{6813E7DE-BFE7-8887-88BC-EB5EB877A20C}" name="Source">
       <FILE id="hpGrdr" name="PluginProcessor.cpp" compile="1" resource="0"

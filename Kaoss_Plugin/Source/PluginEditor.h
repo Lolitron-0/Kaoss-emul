@@ -10,24 +10,34 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+using namespace juce;
+using namespace juce::dsp;
 
 //==============================================================================
 /**
 */
-class Kaoss_PluginAudioProcessorEditor  : public juce::AudioProcessorEditor
+class HandleProcessorEditor : public juce::AudioProcessorEditor,
+    private juce::Slider::Listener
 {
 public:
-    Kaoss_PluginAudioProcessorEditor (Kaoss_PluginAudioProcessor&);
-    ~Kaoss_PluginAudioProcessorEditor() override;
+    HandleProcessorEditor(HandlerProcessor&);
+    ~HandleProcessorEditor() override;
 
     //==============================================================================
-    void paint (juce::Graphics&) override;
+    void paint(juce::Graphics&) override;
     void resized() override;
+
+    void sliderValueChanged(juce::Slider* slider) override;
 
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    Kaoss_PluginAudioProcessor& audioProcessor;
+    HandlerProcessor& audioProcessor;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Kaoss_PluginAudioProcessorEditor)
+
+    juce::Slider xTest;
+    juce::Slider yTest;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HandleProcessorEditor)
 };
+

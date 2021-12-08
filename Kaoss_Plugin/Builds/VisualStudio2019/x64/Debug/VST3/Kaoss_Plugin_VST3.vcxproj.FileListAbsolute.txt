@@ -1,0 +1,2 @@
+C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Builds\VisualStudio2019\x64\Debug\VST3\Kaoss_Plugin.vst3
+C:\Users\ClarVik\source\repos\KAOSS_EMUL\Kaoss_Plugin\Builds\VisualStudio2019\x64\Debug\VST3\Kaoss_Plugin.pdb
