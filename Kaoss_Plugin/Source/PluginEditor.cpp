@@ -67,5 +67,4 @@ void HandleProcessorEditor::sliderValueChanged(juce::Slider* slider)
         audioProcessor.y = slider->getValue();
     }
 
-    audioProcessor.updateFx();
 }

@@ -469,6 +469,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Looper.cpp">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AudioEffectBase.cpp">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>Kaoss_Plugin\Source</Filter>
     </ClCompile>
@@ -2688,6 +2694,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Looper.h">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AudioEffectBase.h">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>Kaoss_Plugin\Source</Filter>
     </ClInclude>

@@ -5,6 +5,12 @@
               pluginFormats="buildVST3" cppLanguageStandard="17">
   <MAINGROUP id="hwJXM0" name="Kaoss_Plugin">
     <GROUP id="{6813E7DE-BFE7-8887-88BC-EB5EB877A20C}" name="Source">
+      <FILE id="mPfEQY" name="Looper.cpp" compile="1" resource="0" file="Source/Looper.cpp"/>
+      <FILE id="biJoz3" name="Looper.h" compile="0" resource="0" file="Source/Looper.h"/>
+      <FILE id="NxckMB" name="AudioEffectBase.cpp" compile="1" resource="0"
+            file="Source/AudioEffectBase.cpp"/>
+      <FILE id="E97xrf" name="AudioEffectBase.h" compile="0" resource="0"
+            file="Source/AudioEffectBase.h"/>
       <FILE id="hpGrdr" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="C1X9md" name="PluginProcessor.h" compile="0" resource="0"

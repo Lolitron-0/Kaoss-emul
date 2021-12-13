@@ -11,31 +11,16 @@
 #include <JuceHeader.h>
 #include "vector"
 #include "algorithm"
-#include "../Builds/VisualStudio2019/AudioEffectBase.h"
+#include "AudioEffectBase.h"
+#include "Looper.h"
+
+
 
 using namespace juce;
 using namespace juce::dsp;
 using namespace std;
 
 //==============================================================================
-/**
-*/
-
-
-enum Effects
-{
-    Looper = 0,
-    Tempo,
-    Chorus,
-    Distortion,
-    Flanger,
-    Compressor,
-    LPF,
-    HPF,
-    Peak,
-    Delay,
-    Reverb
-};
 
 
 class HandlerProcessor : public juce::AudioProcessor
@@ -86,7 +71,6 @@ public:
     void setStateInformation(const void* data, int sizeInBytes) override;
 
     //==============================================================================
-    void updateFx();
 
     int mSampleRate;
     int x = 0, y = 0;
@@ -94,14 +78,8 @@ public:
 
 private:
 
-    vector<AudioEffectBase> mEffectRack;
-
-    using Distortion = ProcessorChain<Gain<float>, Bias<float>, WaveShaper<float>, ProcessorDuplicator<IIR::Filter<float>, IIR::Coefficients<float>>, Gain<float>>;
-    ProcessorChain </*TODO Looper, TODO Tempo*/
-        juce::dsp::Chorus<float>,
-        Distortion,
-        DelayLine <float>
-    > chain;
+    vector<AudioEffectBase*> mEffectRack;
+    Looper looper;
 
     AudioBuffer <float> mDelayBuffer;
     AudioBuffer <float> mLooperBuffer;

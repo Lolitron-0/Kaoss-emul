@@ -25,7 +25,8 @@ HandlerProcessor::HandlerProcessor()
     )
 #endif
 {
-
+    looper.setOn(true);
+    mEffectRack.push_back(&looper);
 
 }
 
@@ -98,28 +99,16 @@ void HandlerProcessor::changeProgramName(int index, const juce::String& newName)
 //==============================================================================
 void HandlerProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-    //chain.get<1>().get<0>().setGainDecibels(24);
-    //chain.get<1>().get<1>().setBias(0.4f);
-    //chain.get<1>().get<2>().functionToUse = std::tanh;
-    //chain.get<1>().get<3>().state = IIR::Coefficients<float>::makeHighPass(sampleRate, 5.0);
-    //chain.get<1>().get<4>().setGainDecibels(-24.f);
+    ProcessSpec spec = { sampleRate, static_cast<juce::uint32> (samplesPerBlock), getTotalNumInputChannels() };
 
-    //chain.get<2>().setDelay(3);
 
-    //chain.prepare(spec);
+    for (int i=0;i<mEffectRack.size();i++)
+        mEffectRack[i]->prepare(spec);
 
-    juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32> (samplesPerBlock), getTotalNumInputChannels() };
+    //const int delayBufferSize = (sampleRate + samplesPerBlock) * 1.;
+    //mDelayBuffer.setSize(getTotalNumInputChannels(), delayBufferSize);
 
-    for (AudioEffectBase effect : mEffectRack)
-    {
-        effect.prepare(spec);
-    }
-
-    const int delayBufferSize = (sampleRate + samplesPerBlock) * 1.;
-
-    mDelayBuffer.setSize(getTotalNumInputChannels(), delayBufferSize);
-
-    this->mSampleRate = sampleRate;
+    //this->mSampleRate = sampleRate;
 }
 
 void HandlerProcessor::releaseResources()
@@ -156,36 +145,21 @@ bool HandlerProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 
 void HandlerProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-    const int bufferLength = buffer.getNumSamples();
-    const int delayBufferLength = mDelayBuffer.getNumSamples();
+    AudioBlock<float> block(buffer);
+    ProcessContextReplacing<float> context(block);
+
+    for (int i = 0; i < mEffectRack.size(); i++)
+    {
+        if (!mEffectRack[i]->isOn()) continue;
+
+        if (!mEffectRack[i]->isFrozen())
+            mEffectRack[i]->updateParams(x, y);
+
+        mEffectRack[i]->process(buffer);
+    }
 
     for (int i = getTotalNumInputChannels(); i < getTotalNumOutputChannels(); i++)
         buffer.clear(i, 0, buffer.getNumSamples());
-
-    for (int channel = 0; channel < getTotalNumInputChannels(); channel++)
-    {
-        const float* bufferData = buffer.getReadPointer(channel);
-        const float* delayBufferData = mDelayBuffer.getReadPointer(channel);
-        float* dryBuffer = buffer.getWritePointer(channel);
-
-        /*fillDelayBuffer(channel, bufferLength, delayBufferLength, bufferData, delayBufferData);
-        getFromDelayBuffer(buffer, channel, bufferLength, delayBufferLength, bufferData, delayBufferData);
-        feedbackDelay(channel, bufferLength, delayBufferLength, dryBuffer);*/
-    }
-
-    if (y == 0) mWritePosition = 0;
-
-    mWritePosition += bufferLength;
-    mWritePosition %= delayBufferLength;
-
-    //AudioBlock<float> block(buffer);
-
-    //ProcessContextReplacing<float> context(block);
-
-    //if (contains(rack, 0))   chain.get<0>().process(context);
-    //else if (contains(rack, 1)) chain.get<1>().process(context);
-    //else if (contains(rack, 2))chain.get<2>().process(context);
-
 }
 
 //put samples from main buffer to delayBuffer (wrapping around zero if refill)
@@ -264,31 +238,6 @@ void HandlerProcessor::setStateInformation(const void* data, int sizeInBytes)
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
-
-void HandlerProcessor::updateFx()
-{
-    for (int fxNum : rack)
-    {
-        switch (fxNum)
-        {
-        case 0:
-        {
-            auto& chorus = chain.get<0>();
-            chorus.setMix(0);
-            //chorus.setMix(0.5*(y/100.));
-            break;
-        }
-        case 1:
-        {
-            auto& distortion = chain.get<1>();
-            distortion.get<0>().setGainDecibels(50 * (y / 100.));
-        }
-        default:
-            break;
-        }
-    }
-}
-
 
 
 //==============================================================================
