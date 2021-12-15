@@ -20,7 +20,7 @@ public:
 
 	virtual void updateParams(int x, int y) override;
 
-	void fillDelayBuffer(int channel, const int bufferLength, const int delayBufferLength, const float* bufferData, const float* delayBufferData);
+	virtual void fillDelayBuffer(int channel, const int bufferLength, const int delayBufferLength, const float* bufferData, const float* delayBufferData);
 
 	void getFromDelayBuffer(juce::AudioBuffer<float>& buffer, int channel, const int bufferLength, const int delayBufferLength, const float* bufferData, const float* delayBufferData);
 
@@ -29,7 +29,7 @@ public:
 	void process(AudioBuffer<float>& buffer);
 	void reset() override;
 
-private:
+protected:
 	AudioBuffer <float> mDelayBuffer;
 	int mWritePosition{ 0 };
 	int mReadPosition{ 0 };

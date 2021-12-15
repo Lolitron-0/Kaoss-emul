@@ -469,6 +469,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\RevLooper.cpp">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Looper.cpp">
       <Filter>Kaoss_Plugin\Source</Filter>
     </ClCompile>
@@ -2694,6 +2697,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\RevLooper.h">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Looper.h">
       <Filter>Kaoss_Plugin\Source</Filter>
     </ClInclude>

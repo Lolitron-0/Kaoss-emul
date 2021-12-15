@@ -13,6 +13,7 @@
 #include "algorithm"
 #include "AudioEffectBase.h"
 #include "Looper.h"
+#include "RevLooper.h"
 
 
 
@@ -79,7 +80,7 @@ public:
 private:
 
     vector<AudioEffectBase*> mEffectRack;
-    Looper looper;
+    RevLooper looper;
 
     AudioBuffer <float> mDelayBuffer;
     AudioBuffer <float> mLooperBuffer;
