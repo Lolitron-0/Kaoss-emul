@@ -5,6 +5,8 @@
               pluginFormats="buildVST3" cppLanguageStandard="17">
   <MAINGROUP id="hwJXM0" name="Kaoss_Plugin">
     <GROUP id="{6813E7DE-BFE7-8887-88BC-EB5EB877A20C}" name="Source">
+      <FILE id="sfbIOI" name="Pitch.cpp" compile="1" resource="0" file="Source/Pitch.cpp"/>
+      <FILE id="SHYDMl" name="Pitch.h" compile="0" resource="0" file="Source/Pitch.h"/>
       <FILE id="JOmeBG" name="RevLooper.cpp" compile="1" resource="0" file="Source/RevLooper.cpp"/>
       <FILE id="sX1ouH" name="RevLooper.h" compile="0" resource="0" file="Source/RevLooper.h"/>
       <FILE id="mPfEQY" name="Looper.cpp" compile="1" resource="0" file="Source/Looper.cpp"/>

@@ -9,6 +9,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+
 using namespace juce;
 using namespace juce::dsp;
 
@@ -100,7 +101,6 @@ void HandlerProcessor::changeProgramName(int index, const juce::String& newName)
 void HandlerProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     ProcessSpec spec = { sampleRate, static_cast<juce::uint32> (samplesPerBlock), getTotalNumInputChannels() };
-
 
     for (int i=0;i<mEffectRack.size();i++)
         mEffectRack[i]->prepare(spec);
