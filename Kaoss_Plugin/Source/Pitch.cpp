@@ -12,26 +12,13 @@
 
 void Pitch::updateParams(int x, int y)
 {
-    if (y == 0)
-        processor->setPitchSemiTones( 0);
-    else
-        processor->setPitchSemiTones((float)(-12+(x/100.)*24));
-}
-
-void Pitch::prepare(const ProcessSpec& s)
-{
-    AudioEffectBase::prepare(s);
-    processor = new SoundTouch();
-    processor->setChannels(1);
-    processor->setSampleRate(s.sampleRate);
-}
-
-void Pitch::process(AudioBuffer<float>& buffer)
-{
-    for (int channel = 0; channel < buffer.getNumChannels(); channel++) {
-        float* bufferData = buffer.getWritePointer(channel);
-        processor->putSamples(bufferData, buffer.getNumSamples());
-        processor->receiveSamples(bufferData, buffer.getNumSamples());
-        buffer.copyFrom(channel, 0, bufferData, buffer.getNumSamples());
+    if (y == 0) {
+        mpProcessor1->setPitchSemiTones(0);
+        mpProcessor2->setPitchSemiTones(0);
+    }
+    else {
+        mpProcessor1->setPitchSemiTones((float)(-12 + (x / 100.) * 24));
+        mpProcessor2->setPitchSemiTones((float)(-12 + (x / 100.) * 24));
     }
 }
+

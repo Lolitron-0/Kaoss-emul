@@ -469,6 +469,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SoundTouchEffectBase.cpp">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Pitch.cpp">
       <Filter>Kaoss_Plugin\Source</Filter>
     </ClCompile>
@@ -2700,6 +2703,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SoundTouchEffectBase.h">
+      <Filter>Kaoss_Plugin\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Pitch.h">
       <Filter>Kaoss_Plugin\Source</Filter>
     </ClInclude>

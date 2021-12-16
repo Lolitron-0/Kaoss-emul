@@ -1,4 +1,5 @@
 
 *.db
+*.pdb
 Kaoss_Plugin/Builds/VisualStudio2019/.vs/Kaoss_Plugin/v16/Browse.VC.opendb
 *.ipch

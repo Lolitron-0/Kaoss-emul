@@ -9,24 +9,17 @@
 */
 
 #pragma once
-#include "AudioEffectBase.h"
-
-#include "soundtouch/SoundTouch.h"
+#include "SoundTouchEffectBase.h"
 
 using namespace std;
 using namespace juce;
 using namespace juce::dsp;
-using namespace soundtouch;
 
-class Pitch : public AudioEffectBase
+class Pitch : public SoundTouchEffectBase
 {
 public:
 
     //inherited
-    virtual void updateParams(int x, int y);
-    virtual void prepare(const ProcessSpec& s);
-    virtual void process(AudioBuffer<float>& buffer);
+    virtual void updateParams(int x, int y) override;
 
-private:
-    soundtouch::SoundTouch* processor;
 };
