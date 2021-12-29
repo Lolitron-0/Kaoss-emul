@@ -1,4 +1,4 @@
 # Kaoss-emul
 
-# Abdndoned 
+# Abandoned 
 # Now on https://gitlab.com/Lolitron/Kaoss-emul
