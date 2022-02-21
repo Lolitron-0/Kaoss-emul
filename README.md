@@ -28,7 +28,6 @@ In general, it allows you to control your mix on live perfomance using a smartph
 * Mobile sockets -- QT UdpSender implementation
 * Plugin sockets -- WinSock2 (C++ (basically C))
 
-![imgs/image.png](./imgs/image.png)
 
 ### Communication
 
