@@ -17,7 +17,7 @@
 
 ### Idea and goal
 
-The idea was to create an instrument to help beginners (and not only) orient in a world of musical live hardware instruments without buing them. As found out, it is going to be not only test suitable solution.
+The idea was to create an instrument to help beginners (and not only) orient in a world of musical live hardware instruments without buying them. As found out, it is going to be not only test suitable solution.
 The wireless connection latency appeared to be acceptably small and it already has a bunch of usable (and useful) effects and a huge space to improve.
 In general, it allows you to control your mix on live perfomance using a smartphone and a plugin by applying, recording and managing a set of effects using XY-panel. 
 
