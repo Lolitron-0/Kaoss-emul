@@ -56,6 +56,3 @@ By now i've created theese effects:
 *   PITCH
 *   RATE
  
-Their physics and logics i'll describe in another file soon.
-
-This list will grow and improve (i mean i'm open for suggestions ;) )
